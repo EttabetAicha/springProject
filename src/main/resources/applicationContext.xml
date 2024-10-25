@@ -19,7 +19,7 @@
     <!-- Component scanning -->
     <context:component-scan base-package="com.aicha.maska"/>
     <context:component-scan base-package="com.aicha.maska.controller"/>
-    <context:component-scan base-package="com.aicha.maska.config"/>
+
 
     <!-- JPA Repositories -->
     <jpa:repositories base-package="com.aicha.maska.repository"/>

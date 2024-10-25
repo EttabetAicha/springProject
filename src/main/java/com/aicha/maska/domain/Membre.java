@@ -1,31 +1,42 @@
 package com.aicha.maska.domain;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import java.time.LocalDate;
 
 @Entity
 public class Membre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int numeroAdhesion;
+    private int numeroadhesion;
+
     private String nom;
     private String prenom;
-    private String pieceIdentification;
+    private String pieceidentification;
     private String nationalite;
-    private Date dateAdhesion;
-    private Date dateExpirationLicence;
 
-    public int getNumeroAdhesion() {
-        return numeroAdhesion;
+    @NotNull(message = "Date Adhesion is mandatory")
+    @PastOrPresent(message = "Date Adhesion must be in the past or present")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dateadhesion;
+
+    @NotNull(message = "Date Expiration Licence is mandatory")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dateexpirationlicence;
+
+    // Getters and setters
+    public int getNumeroadhesion() {
+        return numeroadhesion;
     }
 
-    public void setNumeroAdhesion(int numeroAdhesion) {
-        this.numeroAdhesion = numeroAdhesion;
+    public void setNumeroadhesion(int numeroadhesion) {
+        this.numeroadhesion = numeroadhesion;
     }
 
     public String getNom() {
@@ -44,12 +55,12 @@ public class Membre {
         this.prenom = prenom;
     }
 
-    public String getPieceIdentification() {
-        return pieceIdentification;
+    public String getPieceidentification() {
+        return pieceidentification;
     }
 
-    public void setPieceIdentification(String pieceIdentification) {
-        this.pieceIdentification = pieceIdentification;
+    public void setPieceidentification(String pieceidentification) {
+        this.pieceidentification = pieceidentification;
     }
 
     public String getNationalite() {
@@ -60,19 +71,19 @@ public class Membre {
         this.nationalite = nationalite;
     }
 
-    public Date getDateAdhesion() {
-        return dateAdhesion;
+    public LocalDate getDateadhesion() {
+        return dateadhesion;
     }
 
-    public void setDateAdhesion(Date dateAdhesion) {
-        this.dateAdhesion = dateAdhesion;
+    public void setDateadhesion(LocalDate dateadhesion) {
+        this.dateadhesion = dateadhesion;
     }
 
-    public Date getDateExpirationLicence() {
-        return dateExpirationLicence;
+    public LocalDate getDateexpirationlicence() {
+        return dateexpirationlicence;
     }
 
-    public void setDateExpirationLicence(Date dateExpirationLicence) {
-        this.dateExpirationLicence = dateExpirationLicence;
+    public void setDateexpirationlicence(LocalDate dateexpirationlicence) {
+        this.dateexpirationlicence = dateexpirationlicence;
     }
 }

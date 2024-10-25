@@ -39,7 +39,6 @@
                 <td>${membre.dateexpirationlicence}</td>
                 <td>
                     <!-- Edit Button -->
-                    <a href="${pageContext.request.contextPath}/members/update/${membre.numeroadhesion}" class="btn btn-primary btn-sm">Edit</a>
 
                     <!-- Delete Button -->
                     <form action="${pageContext.request.contextPath}/members/delete/${membre.numeroadhesion}"
@@ -49,7 +48,6 @@
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                     </form>
-
                 </td>
             </tr>
         </c:forEach>
